@@ -22,7 +22,7 @@ ProductTag.init(
     },
     tag_id: {
       type: DataTypes.INTEGER,
-      // Foreign Key 
+      // Foreign Key
       references: {
         model: 'tag',
         key: 'id',
