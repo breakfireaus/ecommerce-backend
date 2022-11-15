@@ -2,7 +2,7 @@
 
 ## Description
 
-
+This is a base for an e-commerce backend  stores can use for people to be able to place their products
 
 ## Table of Contents
 
@@ -13,14 +13,21 @@
 
 ## Installation
 
+1. Git clone the repository
 
+2. Use Mysql and use the schema.sql file in /db folder to setup the database
+3. In the CLI 'npm run seeds' to setup some base products, categories and tags
+4. In the CLI type 'node server.js' to run the server in your local environment 
 
 ## Usage
-- Main Page
-![alt text](assets/images/Screenshot-1.jpg)
+- Here is a link to the video on how to use the software
+
+
 
 ## Credits
 
+- MDN web docs
+- W3schools
 - Ask BCS team @ Monash university Bootcamp
 - Tutor for getting me on track
 
