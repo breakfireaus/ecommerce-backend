@@ -8,11 +8,9 @@ router.get('/', async (req, res) => {
   try {
     const productdossier = await Product.findAll({
       include: [
-        { model: Category, 
-      attributes: ['id', 'category_name']},
-        { model: Tag, 
-        through: ProductTag }],
-    
+        { model: Category, attributes: ['id', 'category_name'] },
+        { model: Tag, through: ProductTag },
+      ],
     });
     res.status(200).json(productdossier);
   } catch (err) {
@@ -25,17 +23,18 @@ router.get('/:id', async (req, res) => {
   try {
     const productdossier = await Product.findByPk(req.params.id, {
       include: [
-        { model: Category, 
-          attributes: ['id', 'category_name']},
-        { model: Tag, 
-        through: ProductTag }],
+        { model: Category, attributes: ['id', 'category_name'] },
+        { model: Tag, through: ProductTag },
+      ],
     });
 
     if (!productdossier) {
-      res.status(404).json({ message: 'A product was not found with this id!' });
+      res
+        .status(404)
+        .json({ message: 'A product was not found with this id!' });
       return;
     }
-console.log(req.body);
+    console.log(req.body);
     res.status(200).json(productdossier);
   } catch (err) {
     res.status(500).json(err);
@@ -54,17 +53,13 @@ router.post('/', (req, res) => {
   */
   Product.create(req.body)
     .then((product) => {
-      console.log(req.body)
+      console.log(req.body);
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tag_ids.length) {
         const productTagIdArr = req.body.tag_ids.map((tag_id) => {
           return {
             product_id: product.id,
             tag_id,
-            product_name: req.body.product_name, 
-            price: product.price, 
-            stock: product.stock, 
-            category_id: product.category_id
           };
         });
         return ProductTag.bulkCreate(productTagIdArr);
@@ -114,7 +109,7 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedProductTags) => res.status(200).json(updatedProductTags))
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
