@@ -4,6 +4,14 @@
 
 This is a base for an e-commerce backend  stores can use for people to be able to place their products
 
+## Technologies used
+
+- Dotenv
+- Express
+- Mysql2
+- Sequelize
+- Javascript 
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -20,7 +28,9 @@ This is a base for an e-commerce backend  stores can use for people to be able t
 4. In the CLI type 'node server.js' to run the server in your local environment 
 
 ## Usage
-- Here is a link to the video on how to use the software
+
+- Here is a link to a video on how to use the software
+- https://drive.google.com/file/d/1mYLNjtj4TUwxGcyj_FEPkWmbYgSqOsAT/view
 
 
 
